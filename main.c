@@ -7,7 +7,7 @@ void FixConsoleBufferSize(int cols, int rows);
 void DisableConsoleResize();
 
 int main() {
-
+    system("chcp 65001 > nul");
     FixConsoleBufferSize(100, 100);
     DisableConsoleResize();
 

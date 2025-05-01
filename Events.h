@@ -15,8 +15,16 @@ void increaseSP(Player* player, int amount);
 
 void decreaseSP(Player* player, int amount);
 
+void print_result(const char* text);
+
 void run(Player* player);
 
+void hide(Player* player);
 
+void pretending_dead(Player* player);
 
+void eat_mushroom(Player* player);
 
+void bite_mushroom(Player* player);
+
+void ignore_mushroom(Player* player);

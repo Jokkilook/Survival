@@ -1,5 +1,10 @@
-﻿#include "Draw.h"
+﻿#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include "Draw.h"
 #include "Events.h"
+#include "Utils.h"
+
 
 const char* title[] = {
     " ___  ___  ___  ___  ___  ___   ___  ___  ___  ___  ___  ___ ",
@@ -16,6 +21,71 @@ const char* pauseText[] = {
     "|_|  |_|_|`___'<___/|___>",
     "                          "
 };
+
+//플레이어 스탯칸 그리는 함수
+void draw_state(Player* player) {
+    move_cursor(15, 0);
+    draw_box(0,15,10,4);
+    move_cursor(16, 2);
+    printf(" HP %3d\n", player->HP);
+    move_cursor(17, 2);
+    printf(" SP %3d\n", player->SP);
+}
+
+//상황 설명과 선택지가 출력될 네모 그리는 함수
+void draw_story() {
+    move_cursor(19, 0);
+    draw_box(0, 19, 80, 8);
+}
+
+//문자 들어갈 네모 그리는 함수
+void draw_box(int x, int y, int width, int height) {
+    move_cursor(y, x);
+    printf("┌");
+    for (int i = 0; i < width - 2; ++i) printf("─");
+    printf("┐");
+
+    // 중간
+    for (int i = 1; i < height - 1; ++i) {
+        move_cursor(y + i, x);
+        printf("│");
+        for (int j = 0; j < width - 2; ++j) printf(" ");
+        printf("│");
+    }
+
+    // 아랫줄
+    move_cursor(y + height - 1, x);
+    printf("└");
+    for (int i = 0; i < width - 2; ++i) printf("─");
+    printf("┘");
+
+}
+
+//아스키 아트 그리는 함수
+void draw_asciiart(const char* asciiart) {
+    move_cursor(0, 0);
+    printf("%s", asciiart);
+}
+
+void draw_game_over(Player* player) {
+    move_cursor(0, 0);
+
+    //탈출 시 보여줄 화면
+    if (player->HP > 0) {
+        printf("탈출 성공");
+    }
+
+    //죽었을 때 보여줄 화면
+    else {
+        printf("님 죽음... 저런...\n");
+    }
+
+    //플레이어 입력 대기
+    while (1) {
+        int key = _getch();
+        if (key == KEY_ENTER || key == KEY_ESC) break;
+    }
+}
 
 
 //메인 메뉴 화면 그려주는 함수
@@ -85,13 +155,13 @@ void draw_game() {
 
     int game = 1;
     int selected = 0;
+    int count = 20;
     //플레이어 초기화
     Player player = { 100,100 };
+    //저장된 여러 상황 중 하나를 골라옴
+    Scene scene = pick_scene();
 
     while (game) {
-
-        //저장된 여러 상황 중 하나를 골라옴
-        Scene scene = pick_scene();
 
         //선택지를 뽑힌 상황의 선택지로 채우기
         const char* options[3];
@@ -104,26 +174,25 @@ void draw_game() {
         system("cls");
 
         //아스키 아트 출력
-        printf("%s\n", scene.screen);
+        draw_asciiart(scene.screen);
 
         //플레이어 스탯 출력
-        printf("+--------+\n");
-        printf("| HP %3d |\n", player.HP);
-        printf("| SP %3d |\n", player.SP);
-        printf("+--------+\n");
+        draw_state(&player);
 
-        printf("+-------------------------------------------+\n");
+        //상황 박스 출력
+        draw_story();
+
         //상황 설명 출력
-        printf("%s\n\n", scene.text);
+        print_story(scene.text);
 
         //선택지 출력
+        move_cursor(24, 4);
         for (int i = 0; i < 3; i++) {
             if (i == selected)
                 printf(" > %-10s", options[i]);
             else
                 printf("   %-10s", options[i]);
         }
-        printf("\n+-------------------------------------------+\n");
 
         //플레이어 입력 받기
         int key = _getch();
@@ -153,12 +222,28 @@ void draw_game() {
                 scene.options[2].apply(&player);
                 break;
             }
-            selected = 0;
+
+            count--;
+
+            //게임 오버 여부 판단
+            //HP가 0이면 게임 오버 OR 상황 20개를 통과하고도 HP가 남아있으면 탈출 성공
+            if (player.HP <= 0 || count <= 0) {
+                //플레이어 스탯 업데이트
+                draw_state(&player);
+                draw_game_over(&player);
+                game = 0;
+            }
+
+            //선택지를 선택해서 결과가 나오면 다음 scene을 뽑음
+            scene = pick_scene();
+
         }
         //ESC 입력 시
         else if (key == KEY_ESC) {
             draw_pause(&game);
         }
+
+
     }
 }
 

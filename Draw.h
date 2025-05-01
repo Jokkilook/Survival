@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Data.h"
 
 //메인 메뉴를 그려주는 함수

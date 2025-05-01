@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 //플레이어 입력값
 #define KEY_UP 72

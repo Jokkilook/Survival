@@ -1,9 +1,26 @@
-#include "Draw.h"
+﻿#include "Draw.h"
 #include "Events.h"
+
+const char* title[] = {
+    " ___  ___  ___  ___  ___  ___   ___  ___  ___  ___  ___  ___ ",
+    "| __>| . || . \\| __>/ __>|_ _| | __>/ __>|  _>| . || . \\| __>",
+    "| _> | | ||   /| _> \\__ \\ | |  | _> \\__ \\| <__|   ||  _/| _> ",
+    "|_|  `___'|_\\_\\|___><___/ |_|  |___><___/`___/|_|_||_|  |___>",
+    "                                                              "
+};
+
+const char* pauseText[] = {
+    " ___  ___  _ _  ___  ___ ",
+    "| . \\| . || | |/ __>| __>",
+    "|  _/|   || ' |\\__ \\| _> ",
+    "|_|  |_|_|`___'<___/|___>",
+    "                          "
+};
+
 
 //메인 메뉴 화면 그려주는 함수
 void draw_menu() {
-    
+
     const char* menus[] = {
         "게임 시작",
         "게임 정보",
@@ -13,14 +30,23 @@ void draw_menu() {
     int menu = 1;
     int menu_count = 3;
     int selected = 0;
-    
+
     while (menu) {
         system("cls");
 
+        //로고 출력
+        for (int i = 0; i < sizeof(title) / sizeof(title[0]); ++i) {
+            printf("%s\n", title[i]);
+        }
 
+        printf(" \n\n\n\n");
+
+        //메뉴 출력
         for (int i = 0; i < 3; ++i) {
             if (i == selected)
                 printf(" > %s\n", menus[i]);
+            else if (i == menu_count-1)
+                printf("   %s", menus[i]);
             else
                 printf("   %s\n", menus[i]);
         }
@@ -70,7 +96,7 @@ void draw_game() {
         //선택지를 뽑힌 상황의 선택지로 채우기
         const char* options[3];
         for (int i = 0; i < 3; i++) {
-           options[i] = scene.options[i].text;
+            options[i] = scene.options[i].text;
         }
         int optionsSize = sizeof(options) / sizeof(options[0]);
 
@@ -88,7 +114,7 @@ void draw_game() {
 
         printf("+-------------------------------------------+\n");
         //상황 설명 출력
-        printf("%s\n\n",scene.text);
+        printf("%s\n\n", scene.text);
 
         //선택지 출력
         for (int i = 0; i < 3; i++) {
@@ -98,7 +124,7 @@ void draw_game() {
                 printf("   %-10s", options[i]);
         }
         printf("\n+-------------------------------------------+\n");
-        
+
         //플레이어 입력 받기
         int key = _getch();
 
@@ -142,13 +168,22 @@ void draw_info() {
 
     while (info) {
         system("cls");
+
+        //로고 출력
+        for (int i = 0; i < sizeof(title) / sizeof(title[0]); ++i) {
+            printf("%s\n", title[i]);
+        }
+
+        //게임 정보 출력
         printf("===== 게임 정보 =====\n\n");
         printf("당신은 깊은 산 속에서 홀로 조난당했습니다.\n");
         printf("탈출을 시도하는 당신의 앞에는 여러 상황이 펼쳐질 것입니다.\n");
-        printf("당신의 현명한 판단만이 무사히 탈출할 수 있는 유일한 방법입니다.\n\n");
-        printf("===== 조작법 =====\n");
-        printf("←, → : 고르기 | Enter : 선택\n\n");
-        printf("ESC를 누르면 메인 메뉴로 돌아갑니다.\n");
+        printf("당신의 현명한 판단만이 무사히 탈출할 수 있는 유일한 방법입니다.\n\n\n\n");
+        
+        //조작법 출력
+        printf("===== 조작법 =====\n\n");
+        printf("←, → : 고르기 | Enter : 선택\n\n\n\n");
+        printf("ESC를 누르면 메인 메뉴로 돌아갑니다.");
 
         int key = _getch();
         if (key == KEY_ESC) {
@@ -163,14 +198,17 @@ void draw_pause(int* game) {
     int menu_count = 2;
     int selected = 0;
 
-    const char* menus[] = {
-    "돌아가기",
-    "종료",
-    };
+    const char* menus[] = { "돌아가기", "종료" };
 
     while (pause) {
         system("cls");
-        printf("지금 종료하면 진행 상황이 모두 사라져요!\n");
+
+        //PAUSE 출력
+        for (int i = 0; i < sizeof(pauseText) / sizeof(pauseText[0]); ++i) {
+            printf("%s\n", pauseText[i]);
+        }
+
+        printf("\n\n지금 종료하면 진행 상황이 모두 사라져요!\n\n");
 
         for (int i = 0; i < 2; ++i) {
             if (i == selected)

@@ -1,4 +1,4 @@
-#include "Events.h"
+﻿#include "Events.h"
 #include "Data.h"
 #include "stdlib.h"
 #include "time.h"
@@ -18,9 +18,9 @@ const Scene scenes[20] = {
         "     /  ``'._-''-_.'``  \\\n",
         "테스트 상황",
         {
-            {"도망간다", run},
-            {"숨는다", run},
-            {"죽은 척", run}
+            { "도망간다", run },
+            { "숨는다", run },
+            { "죽은 척", run }
         }
     },
 };
@@ -39,6 +39,27 @@ Scene pick_scene()
     return scenes[index];
 }
 
+void increaseHP(Player* player, int amount)
+{
+    player->HP += amount;
+}
+
+void decreaseHP(Player* player, int amount)
+{
+    player->HP -= amount;
+}
+
+void increaseSP(Player* player, int amount)
+{
+    player->SP += amount;
+}
+
+void decreaseSP(Player* player, int amount)
+{
+    player->SP -= amount;
+}
+
+
 void run(Player* player) {
-	player->SP -= 10;
+    decreaseSP(player, 10);
 }

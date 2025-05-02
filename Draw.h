@@ -9,9 +9,10 @@ void draw_box(int x, int y, int width, int height);
 
 void draw_asciiart(const char* asciiart);
 
-void draw_state(Player* player);
+//게임 오버 화면을 그려주는 함수
+void draw_game_over(Player* player, int count);
 
-void draw_story();
+void draw_state(Player* player);
 
 void print_story(const char* text);
 

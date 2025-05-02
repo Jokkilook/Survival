@@ -68,6 +68,81 @@ const Scene scenes[20] = {
         { "무시한다", ignore_mushroom }
     }
     },
+    {
+    "\n"
+    "\n"
+    "\n"
+    "\n"
+    "    .                  .-.    .  _   *     _   .                             \n"
+    "           *          /   \\     ((       _/ \\       *    .                   \n"
+    "         _    .   .--'\\/\\_ \\     `      /    \\  *    ___                    \n"
+    "     *  / \\_    _/ ^      \\/\\'__        /\\/\\  /\\  __/   \\ *               \n"
+    "       /    \\  /    .'   _/  /  \\  *' /    \\/  \\/ .`'\\_/\\   .               \n"
+    "  .   /\\/\\  /\\/ :' __  ^/  ^/    `--./.'  ^  `-.\\ _    _:\\ _                 \n"
+    "     /    \\/  \\  _/  \\-' __/.' ^ _   \\_   .'.\\   _/ \\ .  __/ \\               \n"
+    "   /\\  .-   `. \\/     \\ / -.   _/ \\ -. `_/   \\ /    `._/  ^  \\              \n"
+    "  /  `-.__ ^   / .-'.--'    . /    `--./ .-'  `-.  `-. `.  -  `.              \n"
+    "@/        `.  / /      `-.   /  .-'   / .   .'   \\    \\  \\  .-  \\%            \n"
+    "@&8jgs@@%% @)&@&(88&@.-_=_-=_-=_-=_-=_.8@% &@&&8(8%@%8)(8@%8 8%@)%             \n"
+    "@88:::&(&8&&8:::::%&`.~-_~~-~~_~-~_~-~~=.'@(&%::::%@8&8)::&#@8::::           \n"
+    "`::::::8%@@%:::::@%&8:`.=~~-.~~-.~~=..~'8::::::::&@8:::::&8:::::'             \n"
+    " `::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.'               \n",
+    "깨끗해보이는 물 웅덩이를 발견했다!",
+    {
+        { "마신다", drink_pure_water },
+        { "그냥 지나간다", ignore_pure_water },
+        { "손만 씻는다", wash_hand }
+    }
+    },
+    {
+"                                                                                \n"
+"                                                                                \n"
+"                    ^^      .-=-=-=-.  ^^                                     \n"
+"              ^^         (`-=-=-=-=-`)         ^^                           \n"
+"                       (`-=-=-=-=-=-=-`)  ^^         ^^                     \n"
+"                 ^^   (`-=-=-=-=-=-=-=-`)   ^^                            ^^     \n"
+"                     ( `-=-=-=-(@)-=-=-` )      ^^                             \n"
+"                     (`-=-=-=-=-=-=-=-=-`)  ^^                                 \n"
+"                     (`-=-=-=-=-=-=-=-=-`)  ^^                                 \n"
+"                      (`-=-=-=-=-=-=-=-`)          ^^                          \n"
+"                       (`-=-=-=-=-=-=-`)  ^^                 ^^                \n"
+"                         (`-=-=-=-=-`)                                          \n"
+"                          `-=-=-=-=-`                                           \n"
+        ,
+        "꿀이 흐르는 꿀벌집이다!!",
+    {
+        { "위험을 무릅쓰고 꿀을 먹는다", eat_honey },
+        { "돌을 던져 본다", throw_pebble },
+        { "도망간다", runaway_bee }
+    }
+    },
+    {
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                             .-'~~~-.\                                          \n"
+    "                           .'o  oOOOo.                                          \n"
+    "                          :~~~-.oOo   o.                                        \n"
+    "                           . \\ ~-.  oOOo.                                       \n"
+    "                             .; / ~.  OO:                                       \n"
+    "                             .'  ;-- .o.'                                       \n"
+    "                            ,'  ; ~~--'~                                        \n"
+    "                            ;  ;                                               \n"
+    "____________________\\|/__\\____;__\\\\;_\\\\//___\\|/_________________________\n"
+    ,
+    "화려한 버섯을 발견했다!",
+    {
+        {"따먹는다", eat_pretty_mushroom },
+        {"밟는다", step_on_mushroom },
+        {"무시한다", ignore_pretty_mushroom }
+    }
+    }
 };
 
 //저장된 scenes 중 하나를 랜덤하게 뽑는 함수
@@ -82,6 +157,15 @@ Scene pick_scene()
     int index = rand() % count;
 
     return scenes[index];
+}
+
+//게임 오버 시 플레이어 HP/SP, 진행한 씬 개수에 따라 점수 합산
+float calculateScore(Player* player, int sceneCount) {
+    float hpScore = player->HP * 88;
+    float spScore = player->SP * 88;
+    float sceneScore = sceneCount * 17;
+
+    return (hpScore + spScore + sceneScore) * 0.3;
 }
 
 //HP 증가 함수
@@ -188,5 +272,85 @@ void ignore_mushroom(Player* player) {
     print_result("이상한 버섯을 먹어서 좋을 게 없지.");
 }
 
+//맑은 물 마심
+void drink_pure_water(Player* player) {
+    increaseHP(player, 20);
+    increaseSP(player, 40);
+    print_result("맑고 시원한 물이다!");
+}
+
+//맑은 물 손만 씻음
+void wash_hand(Player* player) {
+    increaseHP(player, 1);
+    print_result("손이 깨끗하니 좋네.");
+}
+
+//맑은 물 무시
+void ignore_pure_water(Player* player) {
+    print_result("어떤 세균이 있을 지 몰라... 그냥 지나가자.");
+}
+
+//벌꿀 먹기
+void eat_honey(Player* player) {
+    if (player->SP > 40) {
+        decreaseHP(player, 4);
+        increaseSP(player, 30);
+        print_result("히히 맛있당");
+    }
+    else {
+        decreaseHP(player, 20);
+        decreaseSP(player, 20);
+        print_result("먹고 튀다가 쏘여버렸다...");
+    }
+}
+
+//벌집에 돌던지기
+void throw_pebble(Player* player) {
+    decreaseSP(player, 20);
+    if (player->SP > 40) {
+        print_result("시비걸고 튀었다!!");
+    }
+    else {
+        decreaseHP(player, 14);
+        print_result("도망가다 몇 방 쏘였다...");
+    }
+}
+
+//벌집 도망
+void runaway_bee(Player* player) {
+    print_result("벌은 무서워~");
+}
+
+//화려한 버섯 먹음
+void eat_pretty_mushroom(Player* player) {
+    increaseHP(player, 60);
+    increaseSP(player, 30);
+    print_result("오오!! 힘이 난다!!!");
+}
+
+//화려한 버섯 밟음
+void step_on_mushroom(Player* player) {
+    decreaseHP(player, 4);
+    print_result("윽! 포자가 코에...!");
+}
+
+//화려한 버섯 무시
+void ignore_pretty_mushroom(Player* player) {
+    print_result("모르는 버섯은 무서워...");
+}
+
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //이 밑에 선택지 결과 함수 구현하면 됩니다.---------------------------------------------------------------------
+// 여기 아래 부터 자기 이름 쓰여진 줄 및에 엔터 치면서
+// 그 영역 안에서만 코드 써주세요.
+//정찬영-------------------------------------------------------------------------=
+
+
+
+//송지예-------------------------------------------------------------------------=
+
+
+
+//한승우-------------------------------------------------------------------------=
+
+

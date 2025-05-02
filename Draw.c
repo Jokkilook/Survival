@@ -32,12 +32,6 @@ void draw_state(Player* player) {
     printf(" SP %3d\n", player->SP);
 }
 
-//상황 설명과 선택지가 출력될 네모 그리는 함수
-void draw_story() {
-    move_cursor(19, 0);
-    draw_box(0, 19, 80, 8);
-}
-
 //문자 들어갈 네모 그리는 함수
 void draw_box(int x, int y, int width, int height) {
     move_cursor(y, x);
@@ -67,26 +61,60 @@ void draw_asciiart(const char* asciiart) {
     printf("%s", asciiart);
 }
 
-void draw_game_over(Player* player) {
+//게임 오버 화면을 그려주는 함수
+void draw_game_over(Player* player, int count) {
+    const char* overTitle[] = {
+        "           _____          __  __ ______    ______      ________ _____  \n"
+        "          / ____|   /\\   |  \\/  |  ____|  / __ \\ \\    / /  ____|  __ \\ \n"
+        "         | |  __   /  \\  | \\  / | |__    | |  | \\ \\  / /| |__  | |__) |\n"
+        "         | | |_ | / /\\ \\ | |\\/| |  __|   | |  | |\\ \\/ / |  __| |  _  / \n"
+        "         | |__| |/ ____ \\| |  | | |____  | |__| | \\  /  | |____| | \\ \\ \n"
+        "          \\_____/_/    \\_\\_|  |_|______|  \\____/   \\/   |______|_|  \\_\\\n"
+        "                                                                       \n"
+    };
+
+    //남은 체력과 스태미나, 통과한 스테이지 기반으로 점수 계산
+    float score = calculateScore(player, count);
+
+    system("cls");
     move_cursor(0, 0);
 
+    //GAME OVER 출력
+    for (int i = 0; i < sizeof(overTitle) / sizeof(overTitle[0]); ++i) {
+        printf("%s\n", overTitle[i]);
+    }
+
+    //박스 그리기
+    draw_box(34, 12, 16, 9);
+    move_cursor(14, 36);
+    printf("HP:    %5d", player->HP);
+    move_cursor(16, 36);
+    printf("SP:    %5d", player->SP);
+    move_cursor(18, 36);
+    printf("점수: %6.0f", score);
+
     //탈출 시 보여줄 화면
+    
     if (player->HP > 0) {
-        printf("탈출 성공");
+        move_cursor(10, 26);
+        printf("★ 숲에서 무사히 탈출했습니다! ★");
     }
 
     //죽었을 때 보여줄 화면
     else {
-        printf("님 죽음... 저런...\n");
+        move_cursor(10, 29);
+        printf("숲에서 살아남지 못했습니다.\n");
+
     }
 
+    move_cursor(23, 28);
+    printf("Enter 키를 눌러 메인화면으로...");
     //플레이어 입력 대기
     while (1) {
         int key = _getch();
         if (key == KEY_ENTER || key == KEY_ESC) break;
     }
-}
-
+};
 
 //메인 메뉴 화면 그려주는 함수
 void draw_menu() {
@@ -106,15 +134,19 @@ void draw_menu() {
 
         //로고 출력
         for (int i = 0; i < sizeof(title) / sizeof(title[0]); ++i) {
-            printf("%s\n", title[i]);
+            printf("\033[01m%s\n", title[i]);
         }
 
-        printf(" \n\n\n\n");
+        printf(" \n\n\n\n\033[0m");
+
+        //메뉴 박스 출력
+        draw_box(23, 10, 15, 7);
 
         //메뉴 출력
         for (int i = 0; i < 3; ++i) {
+            move_cursor(12+i, 24);
             if (i == selected)
-                printf(" > %s\n", menus[i]);
+                printf("\033[01m > %s\033[0m\n", menus[i]);
             else if (i == menu_count-1)
                 printf("   %s", menus[i]);
             else
@@ -156,10 +188,14 @@ void draw_game() {
     int game = 1;
     int selected = 0;
     int count = 20;
+    Scene sceneRecord[30];
+
     //플레이어 초기화
     Player player = { 100,100 };
     //저장된 여러 상황 중 하나를 골라옴
     Scene scene = pick_scene();
+    //상황 기록에 삽입
+    sceneRecord[20] = scene;
 
     while (game) {
 
@@ -180,7 +216,7 @@ void draw_game() {
         draw_state(&player);
 
         //상황 박스 출력
-        draw_story();
+        draw_box(0, 19, 80, 8);
 
         //상황 설명 출력
         print_story(scene.text);
@@ -189,10 +225,14 @@ void draw_game() {
         move_cursor(24, 4);
         for (int i = 0; i < 3; i++) {
             if (i == selected)
-                printf(" > %-10s", options[i]);
+                printf("\033[01m > %-10s\033[0m", options[i]);
             else
                 printf("   %-10s", options[i]);
         }
+
+        //안내 메시지 출력
+        move_cursor(27,2);
+        printf("Enter키를 눌러 진행...");
 
         //플레이어 입력 받기
         int key = _getch();
@@ -230,12 +270,22 @@ void draw_game() {
             if (player.HP <= 0 || count <= 0) {
                 //플레이어 스탯 업데이트
                 draw_state(&player);
-                draw_game_over(&player);
+                draw_game_over(&player, count);
                 game = 0;
             }
 
             //선택지를 선택해서 결과가 나오면 다음 scene을 뽑음
             scene = pick_scene();
+            //상황 기록에 나왔던 상황인지 체크
+            int i = 19;
+            for (i = 19; i >= 0; i--) {
+                if (sceneRecord[i].text == scene.text) {
+                    scene = pick_scene();
+                    i = 19;
+                }
+                else break;
+            }
+            
 
         }
         //ESC 입력 시
@@ -293,11 +343,15 @@ void draw_pause(int* game) {
             printf("%s\n", pauseText[i]);
         }
 
-        printf("\n\n지금 종료하면 진행 상황이 모두 사라져요!\n\n");
+        printf("\n\033[01m지금 종료하면 진행 상황이 모두 사라져요!\033[0m\n\n");
+
+        //메뉴 박스 출력
+        draw_box(2, 10, 15, 6);
 
         for (int i = 0; i < 2; ++i) {
+            move_cursor(12+i, 3);
             if (i == selected)
-                printf(" > %s\n", menus[i]);
+                printf("\033[01m > %s\033[0m\n", menus[i]);
             else
                 printf("   %s\n", menus[i]);
         }

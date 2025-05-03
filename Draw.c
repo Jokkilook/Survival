@@ -283,7 +283,10 @@ void draw_game() {
                     scene = pick_scene();
                     i = 19;
                 }
-                else break;
+                else {
+                    sceneRecord[i] = scene;
+                    break;
+                }
             }
             
 

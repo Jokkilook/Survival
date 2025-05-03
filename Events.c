@@ -149,23 +149,25 @@ const Scene scenes[20] = {
 Scene pick_scene()
 {   
     int count = 0;
+    Scene picked;
     while (scenes[count].screen != NULL) {
         ++count;
     }
 
     srand(time(NULL));
     int index = rand() % count;
+    picked = scenes[index];
 
-    return scenes[index];
+    return picked;
 }
 
 //게임 오버 시 플레이어 HP/SP, 진행한 씬 개수에 따라 점수 합산
 float calculateScore(Player* player, int sceneCount) {
-    float hpScore = player->HP * 88;
-    float spScore = player->SP * 88;
-    float sceneScore = sceneCount * 17;
+    float hpScore = player->HP;
+    float spScore = player->SP;
+    float sceneScore = (20 - sceneCount) * 40;
 
-    return (hpScore + spScore + sceneScore) * 0.3;
+    return (hpScore + spScore + sceneScore);
 }
 
 //HP 증가 함수
@@ -341,6 +343,17 @@ void ignore_pretty_mushroom(Player* player) {
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //이 밑에 선택지 결과 함수 구현하면 됩니다.---------------------------------------------------------------------
+
+// 함수 형식은 아래와 같이 ===========================
+// void 함수이름(Player* player) {  <--매개변수는 플레이어의 스탯을 조작하기 때문에 필요하고, 반환형은 void 입니다.
+//      함수 내용
+//      if 조건문을 줘서 현 플레이어 상태에 따라 다른 결과가 나오게 해도 되고
+//      여러 방식으로 구현하되, 마지막 결과는 
+//      print_result("플레이어한테 보여줄 내용") 함수를 써서 마무리하면 됩니다.
+// }
+// =================================================
+
+//★★★★★★★★ 함수 위에는 항상 어떤 함수 인지 주석 달기 ★★★★★★★★★★
 // 여기 아래 부터 자기 이름 쓰여진 줄 및에 엔터 치면서
 // 그 영역 안에서만 코드 써주세요.
 //정찬영-------------------------------------------------------------------------=

@@ -1,19 +1,19 @@
 ﻿#pragma once
 #include "Data.h"
 
-void move_cursor(int row, int col);
-
-void print_wrapped_text(const char* text, int maxWidth, int startRow, int startCol);
-
-void draw_box(int x, int y, int width, int height);
-
+//아스키 아트 그려주는 함수
 void draw_asciiart(const char* asciiart);
 
 //게임 오버 화면을 그려주는 함수
 void draw_game_over(Player* player, int count);
 
+//플레이어 스탯 그려주는 함수
 void draw_state(Player* player);
 
+//문자 들어갈 네모 그리는 함수
+void draw_box(int x, int y, int width, int height);
+
+//하단 네모 박스에 상황 설명 출력하는 함수
 void print_story(const char* text);
 
 //메인 메뉴를 그려주는 함수

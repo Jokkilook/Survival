@@ -13,9 +13,6 @@ void draw_state(Player* player);
 //문자 들어갈 네모 그리는 함수
 void draw_box(int x, int y, int width, int height);
 
-//하단 네모 박스에 상황 설명 출력하는 함수
-void print_story(const char* text);
-
 //메인 메뉴를 그려주는 함수
 void draw_menu();
 

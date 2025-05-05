@@ -61,6 +61,14 @@ void draw_asciiart(const char* asciiart) {
     printf("%s", asciiart);
 }
 
+const char* outro[5] = {
+    "하아... 힘들다...",
+    "어..? 저건 팻말...?",
+    "사람.. 사람이다!!",
+    "저기요!! 여기 도와주세요!!",
+    "..."
+};
+
 //게임 오버 화면을 그려주는 함수
 void draw_game_over(Player* player, int count) {
     const char* overTitle[] = {
@@ -75,6 +83,34 @@ void draw_game_over(Player* player, int count) {
 
     //남은 체력과 스태미나, 통과한 스테이지 기반으로 점수 계산
     float score = calculateScore(player, count);
+
+    system("cls");
+    move_cursor(0, 0);
+
+    //탈출 성공 시 아웃트로 먼저 출력
+    if (player->HP > 0) {
+        //아웃트로 시작
+        for (int i = 0; i < sizeof(outro) / sizeof(outro[0]); i++) {
+            //화면 초기화
+            system("cls");
+            //플레이어 스탯 출력
+            draw_state(player);
+            //상황 박스 출력
+            draw_box(0, 19, 80, 8);
+            //인트로 스토리 출력
+            print_story(outro[i]);
+            //안내 메시지 출력
+            move_cursor(27, 2);
+            printf("Enter키를 눌러 진행...");
+            //플레이어 입력 대기
+            while (1) {
+                //플레이어 입력 받기
+                int key = _getch();
+                //엔터 입력 시 넘어가기
+                if (key == KEY_ENTER) break;
+            }
+        }
+    }
 
     system("cls");
     move_cursor(0, 0);
@@ -94,7 +130,6 @@ void draw_game_over(Player* player, int count) {
     printf("점수: %6.0f", score);
 
     //탈출 시 보여줄 화면
-    
     if (player->HP > 0) {
         move_cursor(10, 26);
         printf("★ 숲에서 무사히 탈출했습니다! ★");
@@ -182,6 +217,19 @@ void draw_menu() {
     }
 }
 
+const char* intro[10] = { 
+    "데굴 데굴 덱데굴",
+    "...",
+    "....",
+    ".....",
+    ".....으음..",
+    "으윽... 여긴 어디지...", 
+    "발을 삐끗해서 굴렀는데...", 
+    "숲 속에 조난 당한건가...",
+    "(주머니를 뒤적이며) 가진 게 아무것도 없잖아..!",
+    "하아... 천천히 주변을 둘러보며 걸어보자..."
+};
+
 //게임 실행 화면 함수 : 게임 시작 선택 시 실행
 void draw_game() {
 
@@ -191,12 +239,33 @@ void draw_game() {
     Scene sceneRecord[30];
 
     //플레이어 초기화
-    Player player = { 100,100 };
+    Player player = { 79, 80 };
     //저장된 여러 상황 중 하나를 골라옴
     Scene scene = pick_scene();
     //상황 기록에 삽입
     sceneRecord[20] = scene;
 
+    //인트로 시작
+    for (int i = 0; i < sizeof(intro) / sizeof(intro[0]); i++) {
+        //화면 초기화
+        system("cls");
+        //상황 박스 출력
+        draw_box(0, 19, 80, 8);
+        //인트로 스토리 출력
+        print_story(intro[i]);
+        //안내 메시지 출력
+        move_cursor(27, 2);
+        printf("Enter키를 눌러 진행...");
+        //플레이어 입력 대기
+        while (1) {
+            //플레이어 입력 받기
+            int key = _getch();
+            //엔터 입력 시 넘어가기
+            if (key == KEY_ENTER) break;
+        }
+    }
+
+    //메인 게임 시작
     while (game) {
 
         //선택지를 뽑힌 상황의 선택지로 채우기

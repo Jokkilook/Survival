@@ -4,6 +4,9 @@
 //아스키 아트 그려주는 함수
 void draw_asciiart(const char* asciiart);
 
+//배열로 저장된 아스키 아트 특정 위치 출력 함수
+void print_asciiart_at_location(int row, int col, const char* str);
+
 //게임 오버 화면을 그려주는 함수
 void draw_game_over(Player* player, int count);
 

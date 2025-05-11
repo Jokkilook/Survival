@@ -8,6 +8,10 @@ void move_cursor(int row, int col) {
 
 //네모칸 안에 텍스트(상황 설명 etc.) 출력하는 함수
 void print_story(const char* text) {
+    move_cursor(24, 3);
+    printf("                                                                          ");
+    move_cursor(21, 4);
+    printf("                                                                          ");
     move_cursor(21, 4);
     printf("%s", text);
 }

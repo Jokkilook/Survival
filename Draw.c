@@ -40,16 +40,16 @@ void draw_box(int x, int y, int width, int height) {
 
 //아스키 아트 그리는 함수
 void draw_asciiart(const char* asciiart) {
+    //위치 상관 없이 0,0위치부터 아스키아트 출력
     move_cursor(0, 0);
     printf("%s", asciiart);
 }
 
 //배열로 저장된 아스키 아트 특정 위치 출력 함수
 void print_asciiart_at_location(int row, int col, const char* str) {
+    //row, col 위치에 str 출력
     printf("\033[%d;%dH%s", row, col, str);
 }
-
-
 
 //게임 오버 화면을 그려주는 함수
 void draw_game_over(Player* player, int count) {
@@ -57,9 +57,6 @@ void draw_game_over(Player* player, int count) {
 
     //남은 체력과 스태미나, 통과한 스테이지 기반으로 점수 계산
     float score = calculateScore(player, count);
-
-    system("cls");
-    move_cursor(0, 0);
 
     //탈출 성공 시 아웃트로 먼저 출력
     if (player->HP > 0) {
@@ -87,6 +84,7 @@ void draw_game_over(Player* player, int count) {
         }
     }
 
+    //아웃트로 끝나면 화면 초기화 후 게임 오버 화면 그리기
     system("cls");
     draw_box(0, 1, 80, 30);
 
@@ -97,7 +95,7 @@ void draw_game_over(Player* player, int count) {
         print_asciiart_at_location(4 + i, 2, overTitle[i]);
     }
 
-    //박스 그리기
+    //결과(HP, SP, 점수)박스 그리기
     draw_box(34, 15, 16, 9);
     move_cursor(17, 37);
     printf("\033[1;31mHP\033[0m:  %5d", player->HP);
@@ -106,21 +104,23 @@ void draw_game_over(Player* player, int count) {
     move_cursor(21, 37);
     printf("\033[1;32m점수\033[0m:%5.0f", score);
 
-    //탈출 시 보여줄 화면
+    //탈출 시 보여줄 문구
     if (player->HP > 0) {
         move_cursor(12, 26);
         printf("\033[1;34m★ 숲에서 무사히 탈출했습니다! ★\033[0m");
     }
 
-    //죽었을 때 보여줄 화면
+    //죽었을 때 보여줄 문구
     else {
         move_cursor(12, 29);
         printf("\033[1;31m숲에서 살아남지 못했습니다.\033[0m");
     }
 
+    //키 입력 안내 문구
     move_cursor(26, 26);
     printf("\033[1;33mEnter 키를 눌러 메인화면으로...\033[0m");
-    //플레이어 입력 대기
+
+    //플레이어 입력 대기 - ENTER 입력 시 루프 깨고 메인으로
     while (1) {
         int key = _getch();
         if (key == KEY_ENTER || key == KEY_ESC) break;
@@ -130,14 +130,18 @@ void draw_game_over(Player* player, int count) {
 //메인 메뉴 화면 그려주는 함수
 void draw_menu() {
 
+    //메뉴 글
     const char* menus[] = {
         "게임 시작",
         "게임 정보",
         "종료"
     };
 
+    //메인 메뉴 상태 변수 1 : 출력 / 0 : 종료
     int menu = 1;
+    //메뉴 개수
     int menu_count = 3;
+    //선택지 인덱스
     int selected = 0;
 
     while (menu) {
@@ -149,8 +153,6 @@ void draw_menu() {
         for (int i = 0; i < sizeof(title) / sizeof(title[0]); ++i) {
             print_asciiart_at_location(6 + i, 10, title[i]);
         }
-
-        printf(" \n\n\n\n\033[0m");
 
         //메뉴 박스 출력
         draw_box(33, 20, 15, 7);
@@ -166,8 +168,10 @@ void draw_menu() {
                 printf("   %s\n", menus[i]);
         }
 
+        //커서 이쁘게 이동
         move_cursor(24, 41);
 
+        //메뉴 선택 입력 받기
         int key = _getch();
 
         if (key == 0 || key == 224) {
@@ -200,9 +204,13 @@ void draw_menu() {
 //게임 실행 화면 함수 : 게임 시작 선택 시 실행
 void draw_game() {
 
+    //게임 상태 변수 1 : 게임 중 / 0 : 게임 종류
     int game = 1;
+    //선택지 인덱스
     int selected = 0;
+    //남은 Scene 변수 - Scene 하나 지날 때마다 --
     int count = 20;
+    //Scene 중복 방지를 위한 Scene 기록 배열
     Scene sceneRecord[30];
 
     //플레이어 초기화
@@ -309,6 +317,7 @@ void draw_game() {
             if (player.HP <= 0 || count <= 0) {
                 //플레이어 스탯 업데이트
                 draw_state(&player);
+                //게임 오버 화면 출력
                 draw_game_over(&player, count);
                 game = 0;
             }
@@ -327,8 +336,6 @@ void draw_game() {
                     break;
                 }
             }
-            
-
         }
         //ESC 입력 시
         else if (key == KEY_ESC) {

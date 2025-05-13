@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include "Utils.h"
 
 //출력 커서 옮기는 함수

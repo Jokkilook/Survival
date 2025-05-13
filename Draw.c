@@ -60,15 +60,15 @@ void draw_game_over(Player* player, int count) {
 
     //탈출 성공 시 아웃트로 먼저 출력
     if (player->HP > 0) {
+        //화면 초기화
+        system("cls");
+        draw_box(0, 25, 80, 6);
+        //플레이어 스탯 출력
+        draw_state(player);
+        //상황 박스 출력
+        draw_box(0, 19, 80, 8);
         //아웃트로 시작
         for (int i = 0; i < sizeof(outro) / sizeof(outro[0]); i++) {
-            //화면 초기화
-            system("cls");
-            draw_box(0, 25, 80, 6);
-            //플레이어 스탯 출력
-            draw_state(player);
-            //상황 박스 출력
-            draw_box(0, 19, 80, 8);
             //인트로 스토리 출력
             print_story(outro[i]);
             //안내 메시지 출력
@@ -107,7 +107,7 @@ void draw_game_over(Player* player, int count) {
     //탈출 시 보여줄 문구
     if (player->HP > 0) {
         move_cursor(12, 26);
-        printf("\033[1;34m★ 숲에서 무사히 탈출했습니다! ★\033[0m");
+        printf("\033[1;34m★ 숲에서 무사히 탈출했습니다! ★ \033[0m");
     }
 
     //죽었을 때 보여줄 문구
@@ -143,6 +143,8 @@ void draw_menu() {
     int menu_count = 3;
     //선택지 인덱스
     int selected = 0;
+    //선택지 새로고침 상태 변수
+    int select = 1;
 
     while (menu) {
         system("cls");
@@ -157,45 +159,51 @@ void draw_menu() {
         //메뉴 박스 출력
         draw_box(33, 20, 15, 7);
 
-        //메뉴 출력
-        for (int i = 0; i < 3; ++i) {
-            move_cursor(22+i, 34);
-            if (i == selected)
-                printf("\033[01;33m > %s\033[0m\n", menus[i]);
-            else if (i == menu_count-1)
-                printf("   %s", menus[i]);
-            else
-                printf("   %s\n", menus[i]);
-        }
+        select = 1;
 
-        //커서 이쁘게 이동
-        move_cursor(24, 41);
+        while (select) {
 
-        //메뉴 선택 입력 받기
-        int key = _getch();
-
-        if (key == 0 || key == 224) {
-            key = _getch();
-            switch (key) {
-            case KEY_UP:
-                selected = (selected - 1 + menu_count) % menu_count;
-                break;
-            case KEY_DOWN:
-                selected = (selected + 1) % menu_count;
-                break;
+            //메뉴 출력
+            for (int i = 0; i < 3; ++i) {
+                move_cursor(22 + i, 34);
+                if (i == selected)
+                    printf("\033[01;33m > %s\033[0m\n", menus[i]);
+                else if (i == menu_count - 1)
+                    printf("   %s", menus[i]);
+                else
+                    printf("   %s\n", menus[i]);
             }
-        }
-        else if (key == KEY_ENTER) {
-            switch (selected) {
-            case 0:
-                draw_game();
-                break;
-            case 1:
-                draw_info();
-                break;
-            case 2:
-                exit(0);
-                break;
+
+            //커서 이쁘게 이동
+            move_cursor(24, 41);
+
+            //메뉴 선택 입력 받기
+            int key = _getch();
+
+            if (key == 0 || key == 224) {
+                key = _getch();
+                switch (key) {
+                case KEY_UP:
+                    selected = (selected - 1 + menu_count) % menu_count;
+                    break;
+                case KEY_DOWN:
+                    selected = (selected + 1) % menu_count;
+                    break;
+                }
+            }
+            else if (key == KEY_ENTER) {
+                switch (selected) {
+                case 0:
+                    draw_game();
+                    break;
+                case 1:
+                    draw_info();
+                    break;
+                case 2:
+                    exit(0);
+                    break;
+                }
+                select = 0;
             }
         }
     }
@@ -212,6 +220,8 @@ void draw_game() {
     int count = 20;
     //Scene 중복 방지를 위한 Scene 기록 배열
     Scene sceneRecord[30];
+    //선택지 새로고침 상태 변수
+    int select = 1;
 
     //플레이어 초기화
     Player player = { 79, 80 };
@@ -220,13 +230,14 @@ void draw_game() {
     //상황 기록에 삽입
     sceneRecord[20] = scene;
 
+    //화면 초기화
+    system("cls");
+    draw_box(0, 25, 80, 6);
+    //상황 박스 출력
+    draw_box(0, 19, 80, 8);
+
     //인트로 시작
     for (int i = 0; i < sizeof(intro) / sizeof(intro[0]); i++) {
-        //화면 초기화
-        system("cls");
-        draw_box(0, 25, 80, 6);
-        //상황 박스 출력
-        draw_box(0, 19, 80, 8);
         //인트로 스토리 출력
         print_story(intro[i]);
         //안내 메시지 출력
@@ -254,8 +265,6 @@ void draw_game() {
         //화면 초기화
         system("cls");
 
-        draw_box(0, 25, 80, 6);
-
         //아스키 아트 출력
         draw_asciiart(scene.screen);
 
@@ -264,85 +273,92 @@ void draw_game() {
 
         //상황 박스 출력
         draw_box(0, 19, 80, 8);
+        //하단 박스 출력
+        draw_box(0, 25, 80, 6);
 
         //상황 설명 출력
         print_story(scene.text);
+        
+        select = 1;
 
-        //선택지 출력
-        move_cursor(24, 3);
-        for (int i = 0; i < 3; i++) {
-            if (i == selected)
-                printf("\033[01;33m > %-10s\033[0m", options[i]);
-            else
-                printf("   %-10s", options[i]);
-        }
+        while (select) {
 
-        //안내 메시지 출력
-        move_cursor(28, 4);
-        printf("\033[1;32mEnter키를 눌러 진행...\033[0m");
-
-        //플레이어 입력 받기
-        int key = _getch();
-
-        //방향기 좌우 입력 시
-        if (key == 0 || key == 224) {
-            key = _getch();
-            switch (key) {
-            case KEY_LEFT:
-                selected = (selected - 1 + optionsSize) % optionsSize;
-                break;
-            case KEY_RIGHT:
-                selected = (selected + 1) % optionsSize;
-                break;
-            }
-        }
-        //엔터 입력 시
-        else if (key == KEY_ENTER) {
-            switch (selected) {
-            case 0:
-                scene.options[0].apply(&player);
-                break;
-            case 1:
-                scene.options[1].apply(&player);
-                break;
-            case 2:
-                scene.options[2].apply(&player);
-                break;
+            //선택지 출력
+            move_cursor(24, 3);
+            for (int i = 0; i < 3; i++) {
+                if (i == selected)
+                    printf("\033[01;33m > %-10s\033[0m", options[i]);
+                else
+                    printf("   %-10s", options[i]);
             }
 
-            count--;
+            //안내 메시지 출력
+            move_cursor(28, 4);
+            printf("\033[1;32mEnter키를 눌러 진행...\033[0m");
 
-            //게임 오버 여부 판단
-            //HP가 0이면 게임 오버 OR 상황 20개를 통과하고도 HP가 남아있으면 탈출 성공
-            if (player.HP <= 0 || count <= 0) {
-                //플레이어 스탯 업데이트
-                draw_state(&player);
-                //게임 오버 화면 출력
-                draw_game_over(&player, count);
-                game = 0;
-            }
+            //플레이어 입력 받기
+            int key = _getch();
 
-            //선택지를 선택해서 결과가 나오면 다음 scene을 뽑음
-            scene = pick_scene();
-            //상황 기록에 나왔던 상황인지 체크
-            int i = 19;
-            for (i = 19; i >= 0; i--) {
-                if (sceneRecord[i].text == scene.text) {
-                    scene = pick_scene();
-                    i = 19;
-                }
-                else {
-                    sceneRecord[i] = scene;
+            //방향기 좌우 입력 시
+            if (key == 0 || key == 224) {
+                key = _getch();
+                switch (key) {
+                case KEY_LEFT:
+                    selected = (selected - 1 + optionsSize) % optionsSize;
+                    break;
+                case KEY_RIGHT:
+                    selected = (selected + 1) % optionsSize;
                     break;
                 }
             }
-        }
-        //ESC 입력 시
-        else if (key == KEY_ESC) {
-            draw_pause(&game);
-        }
+            //엔터 입력 시
+            else if (key == KEY_ENTER) {
+                switch (selected) {
+                case 0:
+                    scene.options[0].apply(&player);
+                    break;
+                case 1:
+                    scene.options[1].apply(&player);
+                    break;
+                case 2:
+                    scene.options[2].apply(&player);
+                    break;
+                }
 
+                count--;
 
+                //게임 오버 여부 판단
+                //HP가 0이면 게임 오버 OR 상황 20개를 통과하고도 HP가 남아있으면 탈출 성공
+                if (player.HP <= 0 || count <= 0) {
+                    //플레이어 스탯 업데이트
+                    draw_state(&player);
+                    //게임 오버 화면 출력
+                    draw_game_over(&player, count);
+                    game = 0;
+                }
+
+                //선택지를 선택해서 결과가 나오면 다음 scene을 뽑음
+                scene = pick_scene();
+                //상황 기록에 나왔던 상황인지 체크
+                int i = 19;
+                for (i = 19; i >= 0; i--) {
+                    if (sceneRecord[i].text == scene.text) {
+                        scene = pick_scene();
+                        i = 19;
+                    }
+                    else {
+                        sceneRecord[i] = scene;
+                        break;
+                    }
+                }
+
+                select = 0;
+            }
+            //ESC 입력 시
+            else if (key == KEY_ESC) {
+                draw_pause(&game);
+            }
+        }
     }
 }
 
@@ -350,34 +366,34 @@ void draw_game() {
 void draw_info() {
     int info = 1;
 
-    while (info) {
-        system("cls");
+    system("cls");
 
-        draw_box(0, 1, 80, 30);
+    draw_box(0, 1, 80, 30);
 
-        //로고 출력
-        for (int i = 0; i < sizeof(title) / sizeof(title[0]); ++i) {
-            print_asciiart_at_location(6 + i, 10, title[i]);
-        }
+    //로고 출력
+    for (int i = 0; i < sizeof(title) / sizeof(title[0]); ++i) {
+        print_asciiart_at_location(6 + i, 10, title[i]);
+    }
 
-        //게임 정보 출력
-        move_cursor(14, 2);
-        printf("================================= \033[01;34m게임 정보\033[0m ==================================");
-        move_cursor(17, 20);
-        printf("당신은 깊은 산 속에서 홀로 조난당했습니다.");
-        move_cursor(19, 12);
-        printf("탈출을 시도하는 당신의 앞에는 여러 상황이 펼쳐질 것입니다.");
-        move_cursor(21, 10);
-        printf("당신의 \033[01;31m현명한 판단\033[0m만이 무사히 탈출할 수 있는 유일한 방법입니다.");
+    //게임 정보 출력
+    move_cursor(14, 2);
+    printf("================================= \033[01;34m게임 정보\033[0m ==================================");
+    move_cursor(17, 20);
+    printf("당신은 깊은 산 속에서 홀로 조난당했습니다.");
+    move_cursor(19, 12);
+    printf("탈출을 시도하는 당신의 앞에는 여러 상황이 펼쳐질 것입니다.");
+    move_cursor(21, 10);
+    printf("당신의 \033[01;31m현명한 판단\033[0m만이 무사히 탈출할 수 있는 유일한 방법입니다.");
         
-        //조작법 출력
-        move_cursor(24, 2);
-        printf("================================= \033[01;34m조작 방법\033[0m ==================================");
-        move_cursor(27, 26);
-        printf("\033[1;32m←, → : 고르기 | Enter : 선택\033[0m");
-        move_cursor(30, 22);
-        printf("\033[1m ESC를 누르면 메인 메뉴로 돌아갑니다. \033[0m");
+    //조작법 출력
+    move_cursor(24, 2);
+    printf("================================= \033[01;34m조작 방법\033[0m ==================================");
+    move_cursor(27, 26);
+    printf("\033[1;32m←, → : 고르기 | Enter : 선택\033[0m");
+    move_cursor(30, 22);
+    printf("\033[1m ESC를 누르면 메인 메뉴로 돌아갑니다. \033[0m");
 
+    while (info) {
         int key = _getch();
         if (key == KEY_ESC) {
             info = 0;

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 //입력된 위치로 커서를 옮겨주는 함수 
 void move_cursor(int row, int col);

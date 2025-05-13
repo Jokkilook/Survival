@@ -1,37 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\",
+  "WorkspaceRootPath": "E:\\GitHub\\Survival\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Data.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|solutionrelative:Data.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Draw.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|E:\\GitHub\\Survival\\Draw.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|solutionrelative:Draw.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Draw.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|E:\\GitHub\\Survival\\Draw.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|solutionrelative:Draw.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Events.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|solutionrelative:Events.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Utils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|E:\\GitHub\\Survival\\Utils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|solutionrelative:Utils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Events.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|E:\\GitHub\\Survival\\Events.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|solutionrelative:Events.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Utils.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|E:\\GitHub\\Survival\\Data.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|solutionrelative:Data.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|E:\\GitHub\\Survival\\Events.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|solutionrelative:Events.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|E:\\GitHub\\Survival\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|E:\\GitHub\\Survival\\Utils.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8549F49F-761B-4B3F-A426-737C70085BC0}|Survival.vcxproj|solutionrelative:Utils.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -48,9 +48,9 @@
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "Utils.c",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Utils.c",
+              "DocumentMoniker": "E:\\GitHub\\Survival\\Utils.c",
               "RelativeDocumentMoniker": "Utils.c",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Utils.c",
+              "ToolTip": "E:\\GitHub\\Survival\\Utils.c",
               "RelativeToolTip": "Utils.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
@@ -58,56 +58,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Draw.c",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Draw.c",
+              "DocumentMoniker": "E:\\GitHub\\Survival\\Draw.c",
               "RelativeDocumentMoniker": "Draw.c",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Draw.c",
+              "ToolTip": "E:\\GitHub\\Survival\\Draw.c",
               "RelativeToolTip": "Draw.c",
-              "ViewState": "AgIAANsAAAAAAAAAAAAmwNQAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAEABAAAAAAAAAAAlwGcBAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-05-01T04:11:39.053Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Events.c",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Events.c",
+              "DocumentMoniker": "E:\\GitHub\\Survival\\Events.c",
               "RelativeDocumentMoniker": "Events.c",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Events.c",
+              "ToolTip": "E:\\GitHub\\Survival\\Events.c",
               "RelativeToolTip": "Events.c",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAAAMgAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAADgBAAAAAAAAAAAAAMgAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-05-01T04:11:48.025Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "main.c",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\main.c",
+              "DocumentMoniker": "E:\\GitHub\\Survival\\main.c",
               "RelativeDocumentMoniker": "main.c",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\main.c",
+              "ToolTip": "E:\\GitHub\\Survival\\main.c",
               "RelativeToolTip": "main.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-04-30T09:16:02.03Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-30T09:16:02.03Z"
             }
           ]
         },
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Utils.h",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Utils.h",
+              "DocumentMoniker": "E:\\GitHub\\Survival\\Utils.h",
               "RelativeDocumentMoniker": "Utils.h",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Utils.h",
+              "ToolTip": "E:\\GitHub\\Survival\\Utils.h",
               "RelativeToolTip": "Utils.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -116,11 +115,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Draw.h",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Draw.h",
+              "DocumentMoniker": "E:\\GitHub\\Survival\\Draw.h",
               "RelativeDocumentMoniker": "Draw.h",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Draw.h",
+              "ToolTip": "E:\\GitHub\\Survival\\Draw.h",
               "RelativeToolTip": "Draw.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -129,25 +128,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Events.h",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Events.h",
+              "DocumentMoniker": "E:\\GitHub\\Survival\\Events.h",
               "RelativeDocumentMoniker": "Events.h",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Events.h",
+              "ToolTip": "E:\\GitHub\\Survival\\Events.h",
               "RelativeToolTip": "Events.h",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAA0AAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-02T07:45:26.194Z"
+              "WhenOpened": "2025-05-02T07:45:26.194Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Data.h",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Data.h",
+              "DocumentMoniker": "E:\\GitHub\\Survival\\Data.h",
               "RelativeDocumentMoniker": "Data.h",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\C\uD504\uB85C\uADF8\uB798\uBC0D\\Survival\\Data.h",
+              "ToolTip": "E:\\GitHub\\Survival\\Data.h",
               "RelativeToolTip": "Data.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEwAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-05-02T08:21:22.466Z",
               "EditorCaption": ""

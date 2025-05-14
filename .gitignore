@@ -57,5 +57,7 @@ dkms.conf
 
 x64/
 Debug/
+.vs/
+
 
 # End of https://www.toptal.com/developers/gitignore/api/c

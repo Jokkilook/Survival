@@ -271,10 +271,10 @@ void draw_game() {
         //플레이어 스탯 출력
         draw_state(&player);
 
-        //상황 박스 출력
-        draw_box(0, 19, 80, 8);
         //하단 박스 출력
         draw_box(0, 25, 80, 6);
+        //상황 박스 출력
+        draw_box(0, 19, 80, 8);
 
         //상황 설명 출력
         print_story(scene.text);
@@ -357,6 +357,7 @@ void draw_game() {
             //ESC 입력 시
             else if (key == KEY_ESC) {
                 draw_pause(&game);
+                break;
             }
         }
     }
@@ -409,21 +410,23 @@ void draw_pause(int* game) {
 
     const char* menus[] = { "돌아가기", "종료" };
 
+
+    system("cls");
+
+    draw_box(0, 1, 80, 30);
+
+    //PAUSE 출력
+    for (int i = 0; i < sizeof(pauseText) / sizeof(pauseText[0]); ++i) {
+        print_asciiart_at_location(6 + i, 28, pauseText[i]);
+    }
+
+    move_cursor(15, 21);
+    printf("\033[1;31m지금 종료하면 진행 상황이 모두 사라져요!\033[0m");
+
+    //메뉴 박스 출력
+    draw_box(33, 20, 15, 6);
+
     while (pause) {
-        system("cls");
-
-        draw_box(0, 1, 80, 30);
-
-        //PAUSE 출력
-        for (int i = 0; i < sizeof(pauseText) / sizeof(pauseText[0]); ++i) {
-            print_asciiart_at_location(6 + i, 28, pauseText[i]);
-        }
-
-        move_cursor(15, 21);
-        printf("\033[1;31m지금 종료하면 진행 상황이 모두 사라져요!\033[0m");
-
-        //메뉴 박스 출력
-        draw_box(33, 20, 15, 6);
 
         for (int i = 0; i < 2; ++i) {
             move_cursor(22+i, 34);

@@ -74,8 +74,50 @@ void ignore_pretty_mushroom(Player* player);
 // 그 영역 안에서만 코드 써주세요.
 //★★★★★★★★ 함수 위에는 항상 어떤 함수 인지 주석 달기 ★★★★★★★★★★
 //정찬영-------------------------------------------------------------------------=
+//뱀 도망
+void run_snake(Player* player);
 
+//뱀 잡아먹기
+void eat_snake(Player* player);
 
+//풀피리불기
+void plute_snake(Player* player);
+
+//산삼 먹기
+void eat_sansam(Player* player);
+
+//산삼 가져가기
+void take_sansam(Player* player);
+
+//산삼 무시
+void ignore_sansam(Player* player);
+
+//자연인 대화
+void talk_nature_human(Player* player);
+
+//자연인 싸움
+void fight_nature_human(Player* player);
+
+//자연인 무시
+void ignore_nature_human(Player* player);
+
+//호랑이 지켜보기
+void see_tiger(Player* player);
+
+//호랑이 도망
+void run_tiger(Player* player);
+
+//호랑이 유인
+void attract_tiger(Player* player);
+
+//상자 열기
+void open_box(Player* player);
+
+//상자 부수기
+void close_box(Player* player);
+
+//상자 무시
+void ignore_box(Player* player);
 
 //송지예-------------------------------------------------------------------------=
 

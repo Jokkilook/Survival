@@ -142,6 +142,140 @@ const Scene scenes[20] = {
         {"밟는다", step_on_mushroom },
         {"무시한다", ignore_pretty_mushroom }
     }
+    },
+    {
+    "                                                                                \n"
+"                                ---_ ......._-_--.                              \n"
+"                             (|\\ /      / /| \\  \\                             \n"
+"                             /  /     .'  -=-'   `.                             \n"
+"                            /  /    .'             )                            \n"
+"                          _/  /   .'        _.)   /                             \n"
+"                         / o   o        _.-' /  .'                              \n"
+"                         \\          _.-'    / .'*|                              \n"
+"                          \\______.-'//    .'.' \\*|                              \n"
+"                           \\|  \\ | //   .'.' _ |*|                              \n"
+"                            `   \\|//  .'.'_ _ _|*|                              \n"
+"                             .  .// .'.' | _ _ \\*|                              \n"
+"                             \\`-|\\_/ /    \\ _ _ \\*\\                            \n"
+"                              `/'\\__/      \\ _ _ \\*\\                           \n"
+"                             /^|            \\ _ _ \\*                            \n"
+"                            '  `             \\ _ _ \\                            \n"
+"                                               \\_                              \n"
+"                                                                                \n"
+    ,
+    "사나운 뱀을 마주쳤다!",
+    {
+        {"도망가자", run_snake},
+        {"잡아먹자", eat_snake},
+        {"풀피리를 불어보자", plute_snake}
+    }
+    },
+    {
+    "                                                                                \n"
+    "                                       ●                                       \n"
+    "                                      /|\\                                      \n"
+    "                                       |                                       \n"
+    "                                      / \\                                      \n"
+    "                                      | |                                       \n"
+    "                                     /   \\                                      \n"
+    "                                    /     \\                                     \n"
+    "                                   /       \\                                    \n"
+    "                                  /         \\                                   \n"
+    "                                 /           \\                                  \n"
+    "                                /             \\                                 \n"
+    "                               /               \\                                \n"
+    "                              /                 \\                               \n"
+    "                             /                   \\                              \n"
+    "                            /                     \\                             \n"
+    "                                                                              \n"
+    ,
+    "산삼..인가? 그런거 같다!",
+    {
+        {"바로 먹어보자", eat_sansam} ,
+        {"가져가자", take_sansam} ,
+        {"독일지도 모른다. 무시하자", ignore_sansam}
+    }
+    },
+    {
+    "                 ,#####,                                                       \n"
+"                 #_   _#                                                      \n"
+"                 |a` `a|                                                      \n"
+"                 |  u  |                                                      \n"
+"                 \\  =  /                                                      \n"
+"                 |\\___/|                                                      \n"
+"        ___ ____/:     :\\____ ___                                            \n"
+"      .'   `.-===-\\   /-===-.`   '.                                          \n"
+"     /      .-\"\"\"\"\"-.-\"\"\"\"\"-.      \\                                        \n"
+"    /'             =:=             '\\                                       \n"
+"  .'  ' .:    o   -=:=-   o    :. '  `.                                     \n"
+" (.'   /'. '-.....-'-.....-' .\\   '.)                                     \n"
+" /' ._/   \".     --:--     .\"   \\_. '\\                                    \n"
+"|  .'|      \".  ---:---  .\"      |'.  |                                     \n"
+"|  : |       |  ---:---  |       | :  |                                     \n"
+" \\ : |       |_____._____|       | : /                                     \n"
+" /   (       |----|------|       )   \\                                     \n"
+"/... .|      |    |      |      |. ...\\                                    \n"
+    ,
+    "산속의 자연인을 만났다..위험해보이는데..",
+    {
+        {"말을 걸어보자", talk_nature_human},
+        {"선빵을 쳐보자", fight_nature_human},
+        {"무시하자", ignore_nature_human}
+    }
+    },
+    {
+    "                                __,,,,_                                         \n"
+    "                 _ __..-;''`--/'/ /.',-`-.                                      \n"
+    "             (`/' ` |  \\ \\ \\\\ / / / / .-'/`,_                               \n"
+    "            /'`\\ \\   |  \\ | \\| // // / -.,/_,'-,                            \n"
+    "           /<7' ;  \\ \\  | ; ||/ /| | \\/    |`-/,/-.,_,/')                    \n"
+    "          /  _.-, `,-\\,__|  _-| / \\ \\/|_/  |    '-/.;.\\'                    \n"
+    "          `-`  f/ ;      / __/ \\__ `/ |__/ |                                   \n"
+    "               `-'      |  -| =|\\_  \\  |-' |                                  \n"
+    "                     __/   /_..-' `  ),'  //                                    \n"
+    "                    ((__.-'((___..-'' \\__.'                                    \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    "                                                                                \n"
+    ,
+    "헉 귀여워서 다가가보니 호랑이였어! 어떻게하지..",
+    {
+        {"나무위에서 지켜보자", see_tiger},
+        {"도망가자",run_tiger},
+        {"떡으로 유인하자", attract_tiger}
+    }
+    },
+    {
+"                   +-------------------------------+                       \n"
+"                  /|                              /|                      \n"
+"                 / |                             / |                      \n"
+"                *--+----------------------------*  |                      \n"
+"                |  |                            |  |                      \n"
+"                |  |                            |  |                      \n"
+"                |  |                            |  |                      \n"
+"                |  |                            |  |                      \n"
+"                |  |                            |  |                      \n"
+"                |  +----------------------------+--+                      \n"
+"                | /                             | /                       \n"
+"                |/                              |/                        \n"
+"                *-------------------------------*                         \n"
+"                                                                            \n"
+"                                                                            \n"
+"                                                                            \n"
+"                                                                            \n"
+"                                                                            \n"
+    ,
+    "오! 무언가 들어있을거같은 상자를 발견했어!",
+    {
+        {"열어보자", open_box},
+        {"부숴보자", close_box},
+        {"무시하자", ignore_box}
+    }
     }
 };
 
@@ -355,8 +489,99 @@ void ignore_pretty_mushroom(Player* player) {
 // 여기 아래 부터 자기 이름 쓰여진 줄 및에 엔터 치면서
 // 그 영역 안에서만 코드 써주세요.
 //정찬영-------------------------------------------------------------------------=
-
-
+//뱀 도망
+void run_snake(Player* player) {
+    if (player->SP < 3) {
+        print_result("내가 아니라 뱀이 도망가버렸다.");
+    }
+    else {
+        decreaseSP(player, 3);
+        print_result("휴, 독사였을지도 몰라.");
+    }
+}
+//뱀 잡아먹기
+void eat_snake(Player* player) {
+    increaseSP(player, 70);
+    print_result("뱀탕 오이시~!");
+}
+//풀피리 불기
+void plute_snake(Player* player) {
+    increaseHP(player, 1);
+    increaseSP(player, 1);
+    print_result("휘리휘리휘리, 뱀도 같이 춤을 춘다! 마음이 차분해지는걸~");
+}
+//산삼먹기
+void eat_sansam(Player* player) {
+    increaseHP(player, 50);
+    print_result("오옷! 힘이 솟는다!");
+}
+//산삼 가져가기
+void take_sansam(Player* player) {
+    increaseSP(player, 5);
+    print_result("탈출하면 팔아야징 ㅎㅎ 기분 좋당~");
+}
+//산삼 무시
+void ignore_sansam(Player* player) {
+    decreaseHP(player, 15);
+    print_result("무시하고 가는데 산삼 줄기에 걸려 넘어졌다..");
+}
+//자연인 대화
+void talk_nature_human(Player* player) {
+    increaseSP(player, 20);
+    print_result("대화를 하다보니 숲에서 살아남을 비법을 얻었다!");
+}
+//자연인 싸움
+void fight_nature_human(Player* player) {
+    decreaseHP(player, 10);
+    if (player->SP < 20) {
+        decreaseHP(player, 30);
+        print_result("헉,,,헉,,저건 곰에 필적할지도 몰라,,");
+    }
+    else {
+        decreaseSP(player, 20);
+        print_result("후..별것도 아닌게..풍근쒜뀌");
+    }
+}
+//자연인 무시
+void ignore_nature_human(Player* player) {
+    print_result("이상하게 생긴건 피하는게 좋갰지");
+}
+//호랑이 지켜보기
+void see_tiger(Player* player) {
+    print_result("후...그래도 안들킨거같다.");
+}
+//호랑이 도망
+void run_tiger(Player* player) {
+    if (player->SP < 30) {
+        decreaseHP(player, 10);
+    }
+    else {
+        decreaseSP(player, 30);
+    }
+}
+//호랑이 유인
+void attract_tiger(Player* player) {
+    decreaseHP(player, 100);
+}
+//상자 열기
+void open_box(Player* player) {
+    increaseHP(player, 20);
+    increaseSP(player, 30);
+}
+//상자 부수기
+void close_box(Player* player) {
+    if (player->SP < 30) {
+        print_result("앗..안에 식량이있었다니...");
+    }
+    else {
+        decreaseSP(player, 30);
+        print_result("안돼!!!!!! X발 내 일용할 양식들이..");
+    }
+}
+//상자 무시
+void ignore_box(Player* player) {
+    print_result("엄마가 남이 주는거나 바닥에있는건 주워먹지 말랬지!");
+}
 
 //송지예-------------------------------------------------------------------------=
 

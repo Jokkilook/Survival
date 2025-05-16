@@ -225,10 +225,10 @@ void draw_game() {
 
     //플레이어 초기화
     Player player = { 79, 80 };
+    //상황 랜덤으로 섞기
+    shuffleScenes();
     //저장된 여러 상황 중 하나를 골라옴
     Scene scene = pick_scene();
-    //상황 기록에 삽입
-    sceneRecord[20] = scene;
 
     //화면 초기화
     system("cls");
@@ -279,8 +279,9 @@ void draw_game() {
         //상황 설명 출력
         print_story(scene.text);
         
+        //선택 상태 변수
         select = 1;
-
+        //방향키로 선택지 이동 시 선택지 칸만 새로 고침
         while (select) {
 
             //선택지 출력
@@ -339,17 +340,15 @@ void draw_game() {
 
                 //선택지를 선택해서 결과가 나오면 다음 scene을 뽑음
                 scene = pick_scene();
-                //상황 기록에 나왔던 상황인지 체크
-                int i = 19;
-                for (i = 19; i >= 0; i--) {
-                    if (sceneRecord[i].text == scene.text) {
-                        scene = pick_scene();
-                        i = 19;
-                    }
-                    else {
-                        sceneRecord[i] = scene;
-                        break;
-                    }
+
+                //개발 완료 전 종료 조건
+                //Scene 불러올 게 없으면 종료
+                if (scene.text == NULL) {
+                    //플레이어 스탯 업데이트
+                    draw_state(&player);
+                    //게임 오버 화면 출력
+                    draw_game_over(&player, count);
+                    game = 0;
                 }
 
                 select = 0;
@@ -409,7 +408,6 @@ void draw_pause(int* game) {
     int selected = 0;
 
     const char* menus[] = { "돌아가기", "종료" };
-
 
     system("cls");
 

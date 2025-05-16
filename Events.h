@@ -7,6 +7,8 @@ typedef struct Scene Scene;
 //Events.c파일에 선언된 scenes배열에서 하나를 랜덤으로 골라오는 함수
 Scene pick_scene();
 
+void shuffleScenes();
+
 //게임 오버 후 점수 계산 함수
 float calculateScore(Player* player, int sceneCount);
 
@@ -121,6 +123,50 @@ void ignore_box(Player* player);
 
 //송지예-------------------------------------------------------------------------=
 
+//산신령 빨간물약 
+void red_drink(Player* player);
+
+//산신령 파란물약 
+void blue_drink(Player* player);
+
+//산신령 선택 
+void want_you(Player* player);
+
+//동굴 쉬기 
+void rest(Player* player);
+
+//동굴 지나치기 
+void pass_away(Player* player);
+
+//동굴 탐험 
+void explore(Player* player);
+
+//소나기 나무 밑으로 피하기 
+void under_tree(Player* player);
+
+//소나기 그냥 맞기 
+void stay_in_rain(Player* player);
+
+//소나기 춤추기 
+void dance(Player* player);
+
+//신발끈 꼼꼼히 묶기
+void tie_hard(Player* player);
+
+//신발끈 안 묶기 
+void not_tie(Player* player);
+
+//신발끈 대충 묶기 
+void tie_loose(Player* player);
+
+//벌레 손 휘젓기 
+void shake_hand(Player* player);
+
+//벌레 차분히 떼어내기 
+void careful_remove(Player* player);
+
+//벌레 몸 세게 털기 
+void shakeoff_bug(Player* player);
 
 
 //한승우-------------------------------------------------------------------------=

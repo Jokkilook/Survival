@@ -1,5 +1,6 @@
 ﻿#include <stdio.h>
 #include "Utils.h"
+#include <string.h>
 
 //출력 커서 옮기는 함수
 void move_cursor(int row, int col) {

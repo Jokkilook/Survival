@@ -5,8 +5,8 @@
 int main() {
 
     //콘솔 인코딩 변경
-    //SetConsoleOutputCP(65001);
-    //SetConsoleCP(65001);
+    SetConsoleOutputCP(65001);
+    SetConsoleCP(65001);
 
     //랜덤 설정
     srand(time(NULL));

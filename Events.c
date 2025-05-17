@@ -547,14 +547,13 @@ int i = 0;
 //저장된 scenes 중 하나를 랜덤하게 뽑는 함수
 Scene pick_scene()
 {   
-    Scene picked = scenes[i];
-    i++;
+    Scene picked = scenes[i++];
 
     return picked;
 }
 
 void shuffleScenes() {
-
+    i = 0;
     int n = 0;
     while (n < 20 && scenes[n].text != NULL) {
         n++;

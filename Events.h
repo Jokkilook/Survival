@@ -168,7 +168,49 @@ void careful_remove(Player* player);
 //벌레 몸 세게 털기 
 void shakeoff_bug(Player* player);
 
-
 //한승우-------------------------------------------------------------------------=
 
+ //자전거 타기
+void ride_bicycle(Player* player);
 
+//자전거 곡예
+void spin_bicycle(Player* player);
+
+//자전거 무시
+void ignore_bicycle(Player* player);
+
+//늑대에게 겁주기
+void give_gup_wolf(Player* player);
+
+//늑대를 쓰다듬기
+void pet_wolf(Player* player);
+
+//늑대에게 도망가기
+void runaway_wolf(Player* player);
+
+//총소리를 쫓아가기
+void chase_gunsound(Player* player);
+
+//반대쪽으로 도망가기
+void go_otherside(Player* player);
+
+//엎드려서 기다리기
+void sleep_floor(Player* player);
+
+//덪을 해체해보기
+void broke_trap(Player* player);
+
+//덪의 미끼를 뺴먹기
+void eat_bait(Player* player);
+
+//덪 주변에 숨기
+void hide_trap_side(Player* player);
+
+//텐트 안 수색하기
+void search_tent(Player* player);
+
+//텐트를 태우기
+void blaze_tent(Player* player);
+
+//텐트 무시하기
+void ignore_tent(Player* player);
